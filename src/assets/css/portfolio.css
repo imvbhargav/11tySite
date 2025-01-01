@@ -9,6 +9,12 @@
   --pink: #ec4899;
 }
 
+html, body {
+  height: 100%;
+  overflow: auto;
+  position: relative;
+}
+
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;
