@@ -1,0 +1,38 @@
+---
+layout: base.njk
+title: Oops! Not Found
+permalink: 404.html
+---
+<style>
+  main {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .err_card {
+    padding: 5rem;
+    background-color: #333;
+    text-align: center;
+    border-radius: 2rem;
+  }
+  .err_card > h1 {
+    border-bottom: 2px solid #111;
+    margin: 0;
+    font-size: clamp(3.2rem, 5vw, 4.6rem);
+  }
+  .err_card > p {
+    margin-top: 1rem;
+  }
+</style>
+<div class="err_card">
+  <h1>{{ title }}</h1>
+  <p>Sorry, the page you are looking for does not exists here, maybe you took a wrong diversion!</p>
+  <h3>Try these routes:</h3>
+  <p>
+    <a class="spl_link" href="/">Portfolio {{ page.url }}</a> |
+    <a class="spl_link" href="/blog">Blog Home</a> |
+    <a class="spl_link" href="/blog/all">All Posts</a> |
+    <a class="spl_link" href="/blog/featured">Featured Posts</a>
+  </p>
+</div>

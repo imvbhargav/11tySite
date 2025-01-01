@@ -1,0 +1,42 @@
+---
+layout: base.njk
+css: /assets/css/article.css
+---
+<article class="main_post">
+  <div aria-label="Post date and tag" class="meta">
+    <time>{{ date | postDate }}</time>
+  </div>
+  <h1 aria-label="Post title" class="title">{{ title }}</h1>
+  <section aria-label="Post content" class="post_content">
+    {{ content | safe }}
+  </section>
+  <p class="post_end rounded"></p>
+  <h5>Explore posts with same tags</h5>
+  <ul class="tags">
+    {%- for tag in tags -%}
+    <li><a href="/blog/tags/{{ tag | slugify }}" class="spl_link"> {{ tag }}</a></li>
+    {%- endfor -%}
+  </ul>
+</article>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  const languages = new Set();
+  document.querySelectorAll('code[class*="language-"]').forEach((block) => {
+    const langClass = block.className.match(/language-([\w-]+)/);
+    if (langClass && langClass[1] !== 'none') {
+      languages.add(langClass[1]);
+    }
+  });
+
+  const loadLanguage = (lang) => {
+    const script = document.createElement("script");
+    script.src = `https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-${lang}.min.js`;
+    script.onload = () => Prism.highlightAll();
+    document.body.appendChild(script);
+  };
+
+  languages.forEach(loadLanguage);
+});
+</script>

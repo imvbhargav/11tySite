@@ -1,0 +1,60 @@
+---
+layout: base.njk
+pagination:
+  data: collections.tagPages
+  size: 1
+  alias: tagpage
+permalink: "{% if tagpage.id == 0 %}{{ '/blog/tags/' + tagpage.tag | slugify + '/index.html' }}{% else %}{{ '/blog/tags/' + tagpage.tag | slugify + '/' + tagpage.id + '/index.html' }}{% endif %}"
+---
+<div class="posts_wrapper rounded">
+  <h3 class="heading"><span class="rounded">Posts tagged {{ tagpage.tag }}</span></h3>
+  <h3 class="seeall rounded"><a class="spl_link rounded" href="/blog/all">see all posts &rarr;</a></h3>
+  <section aria-label="All posts" class="all_posts">
+    {%- for post in tagpage.posts -%}
+        <a href="{{ post.url }}" class="post rounded">
+          <img
+            src="{% if post.data.image %}{{ post.data.image }}{% else %}https://fakeimg.pl/600x400/333333/666666?text=-+No+Image+-&font=default{% endif %}"
+            alt="{% if post.data.imageAlt %}{{ post.data.imageAlt }}{% else %}Image not added to post{% endif %}"
+            width="100%"
+            class="post_img rounded"
+          />
+          <div class="content">
+            <p class="post_date"><small class="post_data__span"><time>{{ post.data.date | postDate }}</time><span class="tag">{{ tagpage.tag }}</span></small></p>
+            <p class="post_title">{{ post.data.title | truncate(60) }}</p>
+            <small class="post_description">{{ post.data.description | safe | truncate(160) }}</small>
+          </div>
+        </a>
+    {%- endfor -%}
+  </section>
+</div>
+<nav class="pagination_nav" aria-labelledby="pagination">
+  <ul class="pagination_links">
+      {% if tagpage.id != 0 and tagpage.id != 1 %}
+      <li>
+        <a class="spl_link" href="/blog/tags/{{ tagpage.tag | slugify }}">First</a>
+      </li>
+      {% endif %}
+      {% if tagpage.id > 0 %}
+      <li>
+        {% if tagpage.id == 1 %}
+        <a class="spl_link" href="/blog/tags/{{ tagpage.tag | slugify }}">Previous</a>
+        {% else %}
+        <a class="spl_link" href="/blog/tags/{{ tagpage.tag | slugify }}/{{ tagpage.id - 1 }}">Previous</a>
+        {% endif %}
+      </li>
+      {% endif %}
+      <li>
+        <a class="spl_link" href="/blog/tags/{{ tagpage.tag | slugify }}/{{ tagpage.id }}" aria-current="page">{{ tagpage.id + 1 }}</a>
+      </li>
+      {% if tagpage.id < tagpage.totalpages - 1 %}
+      <li>
+        <a class="spl_link" href="/blog/tags/{{ tagpage.tag | slugify }}/{{ tagpage.id + 1 }}">Next</a>
+      </li>
+      {% endif %}
+      {% if tagpage.id < tagpage.totalpages - 1 and tagpage.id != tagpage.totalpages - 2 %}
+      <li>
+        <a class="spl_link" href="/blog/tags/{{ tagpage.tag | slugify }}/{{ tagpage.totalpages - 1 }}">Last</a>
+      </li>
+      {% endif %}
+  </ul>
+</nav>

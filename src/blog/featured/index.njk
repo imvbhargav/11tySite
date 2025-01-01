@@ -1,0 +1,63 @@
+---
+layout: 'base.njk'
+pagination:
+  data: collections.featuredPosts
+  size: 10
+  reverse: true
+title: Featured
+description: Shows all the featured posts.
+---
+<div class="posts_wrapper rounded">
+  <h3 class="heading"><span class="rounded">Featured</span></h3>
+  <h3 class="seeall rounded"><a class="spl_link rounded" href="/blog/all">see all posts &rarr;</a></h3>
+  <section aria-label="All posts" class="all_posts">
+    {% if collections.featuredPosts %}
+      {%- for post in pagination.items -%}
+          <a href="{{ post.url }}" class="post rounded">
+            <img
+              src="{% if post.data.image %}{{ post.data.image }}{% else %}https://fakeimg.pl/600x400/333333/666666?text=-+No+Image+-&font=default{% endif %}"
+              alt="{% if post.data.imageAlt %}{{ post.data.imageAlt }}{% else %}Image not added to post{% endif %}"
+              width="100%"
+              class="post_img rounded"
+            />
+            <div class="content">
+              <p class="post_date"><small class="post_data__span"><time>{{ post.data.date | postDate }}</time><span class="tag">{{ post.data.tags[0] }}</span></small></p>
+              <p class="post_title">{{ post.data.title | truncate(60) }}</p>
+              <small class="post_description">{{ post.data.description | safe | truncate(160) }}</small>
+            </div>
+          </a>
+      {%- endfor -%}
+      {% endif %}
+  </section>
+</div>
+<nav class="pagination_nav" aria-labelledby="pagination">
+  <ul class="pagination_links">
+      {% if page.url != pagination.href.first and pagination.href.first != pagination.href.previous %}
+      <li>
+        <a class="spl_link" href="{{ pagination.href.first }}">First</a>
+      </li>
+      {% endif %}
+      {% if pagination.href.previous %}
+      <li>
+        <a class="spl_link" href="{{ pagination.href.previous }}">Previous</a>
+      </li>
+      {% endif %}
+      {%- for pageEntry in pagination.pages %}
+      {% if page.url == pagination.hrefs[ loop.index0 ] %}
+      <li>
+        <a class="spl_link" href="{{ pagination.hrefs[ loop.index0 ] }}"{% if page.url == pagination.hrefs[ loop.index0 ] %} aria-current="page"{% endif %}>{{ loop.index }}</a>
+      </li>
+      {% endif %}
+      {%- endfor %}
+      {% if pagination.href.next %}
+      <li>
+        <a class="spl_link" href="{{ pagination.href.next }}">Next</a>
+      </li>
+      {% endif %}
+      {% if page.url != pagination.href.last and pagination.href.next != pagination.href.last %}
+      <li>
+        <a class="spl_link" href="{{ pagination.href.last }}">Last</a>
+      </li>
+      {% endif %}
+  </ul>
+</nav>

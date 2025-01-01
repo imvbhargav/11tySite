@@ -1,0 +1,15 @@
+---
+layout: base.njk
+css: /assets/css/tags.css
+title: Tags
+---
+{% if collections.postTags %}
+  <div class="main__wrapper rounded">
+    <h3 class="heading"><span class="rounded">Explore posts by tags</span></h3>
+    <ul class="tags_list">
+      {%- for tag in collections.postTags -%}
+        <li><a href="/blog/tags/{{ tag | slugify }}" class="tags_tag spl_link">{{ tag }}</a></li>
+      {% endfor %}
+    </p>
+  </div>
+{% endif %}

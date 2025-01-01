@@ -1,0 +1,25 @@
+---
+permalink: /blog/sitemap.xml
+baselink: http://localhost:8080
+---
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  {% for item in collections.all %}
+  {% if item.url != page.url and item.url != '/' and item.url != '/404.html' %}
+  <url>
+  <loc>{{ baselink }}{{ item.url }}</loc>
+  <lastmod>{{ item.date }}</lastmod>
+  <priority>
+    {% if item.data.priority %}
+    {{ item.data.priority }}
+    {% else %}
+    {% if item.url == '/blog/rss.xml' %}
+    0.50
+    {% else %}
+    0.80
+    {% endif %}
+    {% endif %}
+  </priority>
+  </url>
+  {% endif %}
+  {% endfor %}
+</urlset>

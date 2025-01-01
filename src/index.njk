@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bhargav | Portfolio</title>
+  <link rel="icon" href="/assets/images/logo.png">
+  <link rel="stylesheet" href="/assets/css/portfolio.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Outfit:wght@100..900&family=Parkinsans:wght@300..800&display=swap" rel="stylesheet">
+  <link rel="prefetch"as="image"href="https://img.icons8.com/?size=100&id=8808&format=png&color=ec4899">
+  <link rel="prefetch"as="image"href="https://img.icons8.com/?size=100&id=12599&format=png&color=ec4899">
+  <link rel="prefetch"as="image"href="https://img.icons8.com/?size=100&id=phOKFKYpe00C&format=png&color=ec4899">
+</head>
+<body>
+  <svg style="display: none;">
+    <defs>
+      <filter id="grain">
+        <feTurbulence
+          type="turbulence"
+          baseFrequency="0.8"
+          numOctaves="1"
+          result="turbulence"/>
+        <feBlend in="SourceGraphic" in2="turbulence"/>
+      </filter>
+    </defs>
+  </svg>
+  <header id="header" class="highlight">
+    <nav>
+      <h1 class="logo">bv</h1>
+      <ul>
+        <li><a href="/blog" class="spl_link blog">Blog</a></li>
+        <li><a href="#contact" class="spl_link contact">Contact</a></li>
+        <li>
+          <a download="bhargav_resume.pdf" href="{{ portfolio.connection.resume }}" class="spl_link resume">
+            Resume
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <div class="wrapper">
+    <main>
+      <div class="hero_card mtop_lg" id="hero">
+          <p class="time jmono"><span id="time">Time</span></p>
+        <div class="hero_image">
+          <img src="/assets/images/me2.png" />
+        </div>
+        <div class="hero_content">
+          <h1><span class="highlight parkinsans">Bhargav V</span></h1>
+          <p class="jmono"><span class="pink underline">Front-end developer</span><small> based in Bangalore, KA, India.</small></p>
+          <p>Code, develop and learn, is what I do regularly, I like to work on frontend, but I also have enough tools and interest to work on backend.</p>
+          <p>I mostly work with Javascript to code, build and deliver functional and beautiful websites. Along the way, I’ve explored Python, diving into the Django and FastAPI frameworks to broaden my toolkit and tackle diverse challenges.</p>
+          <p> Currently I am polishing my skills in design.</p>
+          <div class="cta">
+            <a href="{{ portfolio.connection.resume }}" download="bhargav_resume.pdf">
+              <span>Resume</span>
+            </a>
+            <a href="#contact"><span>Contact</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid mtop">
+        <section>
+          {% for exp in portfolio.experience %}
+            <div class="card mtop">
+              <h4 class="blueviolet">Experience</h4>
+              <p class="pink">{{ exp.designation }}</p>
+              <h3 class="heading">{{ exp.company }}</h3>
+              <p><small>{{ exp.year }}</small></p>
+              <p class="stack">
+                {% for item in exp.stack %}
+                <span class="{{ item | slugify }}">{{ item }}</span>,
+                {% endfor %}
+              </p>
+              <p class="desc">
+                {{ exp.content }}
+              </p>
+            </div>
+          {% endfor %}
+        </section>
+        <br />
+        <section>
+          {% for edu in portfolio.education %}
+            <div class="card">
+              <h4 class="blueviolet">Education</h4>
+              <p><span class="pink">{{ edu.name }}</span> <small>| <small class="blue">{{ edu.stream }}</small></small></p>
+              <h3 class="heading">{{ edu.institute }}</h3>
+              <p><small>{{ edu.year }} | {{ edu.result }}</small></p>
+              <p class="desc">
+                {{ edu.content }}
+              </p>
+            </div>
+          {% endfor %}
+        </section>
+      </div>
+      <h1 class="center mtop">Projects</h1>
+      <div class="grid">
+        {% for project in portfolio.projects.mainProjects %}
+        <section>
+          <div class="card">
+            <div class="projectImage">
+              <a href="{{ project.links.live }}" target="_blank">
+                <img src="{{ project.image }}" alt="{{ project.name }}" />
+              </a>
+            </div>
+            <p class="pink">{{ project.name }}</p>
+            <h3 class="heading">{{ project.title }}</h3>
+            <p>
+              <a href="{{ project.links.live }}" target="_blank" class="spl_link hover_true"><small>Live</small></a>
+              |
+              <a href="{{ project.links.github }}" target="_blank" class="spl_link hover_true"><small>Github</small></a>
+            </p>
+            <p class="stack">
+              {% for item in project.stack %}
+                <span class="{{ item | slugify }}">{{ item }}</span>,
+              {% endfor %}
+            </p>
+            <p class="desc">
+              {{ project.content }}
+            </p>
+          </div>
+        </section>
+        <br/>
+        {% endfor %}
+      </div>
+      <br/>
+      <section>
+        <div class="card major">
+          <p class="pink">Other projects</p><br/>
+          {% for project in portfolio.projects.otherProjects %}
+            <div class="card">
+              <div class="projectImage">
+                <a href="{{ project.links.live }}" target="_blank">
+                  <img class="project_image"
+                    src="{% if project.image %}{{ project.image }}{% else %}https://fakeimg.pl/600x400/333333/666666?text=-+No+Image+-&font=default{% endif %}"
+                    alt="{% if project.image %}{{ project.title }}{% else %}Image not added to project{% endif %}"
+                  />
+                </a>
+              </div>
+              <h3 class="heading">{{ project.title }}</h3>
+              <p>
+                <a href="{{ project.links.live }}" target="_blank" class="spl_link hover_true"><small>Live</small></a>
+                |
+                <a href="{{ project.links.github }}" target="_blank" class="spl_link hover_true"><small>Github</small></a>
+              </p>
+              <p class="stack">
+                {% for item in project.stack %}
+                  <span class="{{ item | slugify }}">{{ item }}</span>,
+                {% endfor %}
+              </p>
+              <p class="desc">{{ project.content }}</p>
+            </div>
+            <br />
+          {% endfor %}
+        </div>
+      </section>
+      <br />
+      <h1 class="center mtop">Skills</h1>
+      <section>
+        <div class="card">
+          <h4 class="pink underborderline">Languages</h4>
+          <p class="blue"><small>For communicating with humans</small></p>
+          <ul class="sidebyside">
+            {% for skill in portfolio.skills.hlanguages %}
+              <li>{{ skill }}, </li>
+            {% endfor %}
+          </ul>
+          <p class="blue"><small>For communicating with computer</small></p>
+          <ul class="sidebyside">
+            {% for skill in portfolio.skills.planguages %}
+              <li>{{ skill }}, </li>
+            {% endfor %}
+          </ul>
+          <h4 class="underborderline pink">Framework / Libraries</h4>
+          <ul class="sidebyside">
+            {% for skill in portfolio.skills.framework %}
+              <li>{{ skill }}, </li>
+            {% endfor %}
+          </ul>
+          <h4 class="underborderline pink">Databases / Services</h4>
+          <ul class="sidebyside">
+            {% for skill in portfolio.skills.db %}
+              <li>{{ skill }}, </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </section>
+      {% if collections.featuredPosts %}
+      <br/>
+      <h1 class="center mtop">Featured Reads</h1>
+      <section>
+        {% set x = 0 %}
+        {%- for post in collections.featuredPosts | reverse -%}
+          {% set x = x + 1 %}
+          {% if x < 4 %}
+          <a href="{{ post.url }}" class="rounded article">
+            <img
+              src="{{ post.data.image }}"
+                alt="{{ post.data.imageAlt }}"
+              width="100%"
+              class="rounded"
+            />
+            <div class="featured_content">
+              <p class="post_date"><small class="post_data__span"><span>{{ post.data.date | postDate }}</span><span class="tag">{{ post.data.tags[0] }}</span></small></p>
+              <p class="post_title">{{ post.data.title | truncate(60) }}</p>
+              <small class="post_description">{{ post.data.description | safe | truncate(160) }}</small>
+            </div>
+          </a>
+          {% endif %}
+        {%- endfor -%}
+        <h3 class="seeall">
+          <a href="/blog/featured" class="spl_link rounded">more featured posts &rarr;</a>
+        </h3>
+      </section>
+      <br/>
+      {% endif %}
+      <h1 class="center mtop">Get in touch</h1>
+      <section id="contact">
+        <div class="card">
+          <button class="email copy" type="button" onclick="copyEmail()"><strong id="email">{{ portfolio.connection.email }}</strong><span id="copyText">Click to copy</span></button>
+          <div class="socials">
+            <a class="socials_logo linkedin" href="{{ portfolio.connection.linkedin }}" target="_blank">LinkedIn</a>
+            <a class="socials_logo github" href="{{ portfolio.connection.github }}" target="_blank">GitHub</a>
+            <a class="socials_logo twitter" href="{{ portfolio.connection.x }}" target="_blank">X</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <footer>
+    <p>Versions:
+      {% for site in portfolio.connection.previous %}
+        <a class="spl_link hover_true" target="_blank" href="{{ site.link }}">
+          {{ site.name }}
+        </a> &#8226;
+      {% endfor %}
+      <span>Current (2024 - Present)</span>
+    </p>
+    <div>
+      <p>This site is built by Bhargav V using <a href="https://11ty.dev" class="spl_link hover_true" target="_blank">11ty</a> as SSG, and deployed on <a href="https://netlify.com" class="spl_link hover_true" target="_blank">Netlify</a>.</p>
+      <p>&copy;Bhargav | 2024</p>
+    </div>
+  </footer>
+
+  <script>
+    async function copyEmail() {
+      const email = document.getElementById("email").innerText;
+      console.log(email);
+      try {
+        await navigator.clipboard.writeText(email);
+        const copyText = document.getElementById("copyText");
+        copyText.innerText = "Email copied";
+        setTimeout(() => {
+          copyText.innerText = "Click to copy";
+        }, 3000);
+      } catch (err) {
+        console.error("Failed to copy text: " + err);
+      }
+    }
+
+    let lastScrollTop = 0;
+    window.addEventListener('scroll', () => {
+      let currentScroll = window.scrollY || document.documentElement.scrollTop;
+
+      const header = document.getElementById("header");
+
+      if (currentScroll > lastScrollTop) {
+          header.animate({
+            opacity: "0",
+            pointerEvents: "none"
+          }, { duration: 1000, fill: "forwards" });
+      } else {
+          header.animate({
+            opacity: "1",
+            pointerEvents: "auto"
+          }, { duration: 1000, fill: "forwards" });
+      }
+
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Prevent negative values
+    });
+
+    function formatDate() {
+      const months = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+      ];
+
+      const now = new Date();
+
+      const day = String(now.getDate()).padStart(2, '0'); // Add leading zero if day is less than 10
+      const month = months[now.getMonth()]; // Get month name
+      const year = now.getFullYear(); // Get full year
+      const hours = String(now.getHours()).padStart(2, '0'); // Add leading zero if hours < 10
+      const minutes = String(now.getMinutes()).padStart(2, '0'); // Add leading zero if minutes < 10
+      const seconds = String(now.getSeconds()).padStart(2, '0'); // Add leading zero if seconds < 10
+
+      const formattedDate = `${day} ${month} ${year} | ${hours}:${minutes}:${seconds}`;
+      return formattedDate;
+    }
+
+    const timeContainer = document.getElementById("time");
+    setInterval(() => {
+      const currentDateTime = new Date();
+      timeContainer.innerText = formatDate(currentDateTime);
+    }, 1000);
+  </script>
+</body>
+</html>

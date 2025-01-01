@@ -1,0 +1,61 @@
+---
+layout: 'base.njk'
+title: Blog
+description: This the home page of the website.
+---
+<div class="main__wrapper rounded">
+  <h3 class="heading"><span class="rounded">Recent</span></h3>
+  <section aria-label="All posts" class="all_posts">
+    {% set x = 0 %}
+    {%- for post in collections.posts | reverse -%}
+      {% if not collections.featuredPosts or post not in collections.featuredPosts %}
+        {% set x = x + 1 %}
+        {% if x < 4 %}
+        <a href="{{ post.url }}" class="post rounded">
+          <img
+            src="{% if post.data.image %}{{ post.data.image }}{% else %}https://fakeimg.pl/600x400/333333/666666?text=-+No+Image+-&font=default{% endif %}"
+            alt="{% if post.data.imageAlt %}{{ post.data.imageAlt }}{% else %}Image not added to post{% endif %}"
+            width="100%"
+            height="100%"
+            class="post_img rounded"
+          />
+          <div class="content">
+            <p class="post_date"><small class="post_data__span"><time>{{ post.data.date | postDate }}</time><span class="tag">{{ post.data.tags[0] }}</span></small></p>
+            <p class="post_title">{{ post.data.title | truncate(60) }}</p>
+            <small class="post_description">{{ post.data.description | safe | truncate(160) }}</small>
+          </div>
+        </a>
+        {% endif %}
+      {% endif %}
+    {%- endfor -%}
+  </section>
+  <h3 class="seeall rounded"><a class="spl_link rounded" href="/blog/all">all posts &rarr;</a></h3>
+</div>
+
+<div class="posts_wrapper rounded">
+  <h3 class="heading"><span class="rounded">Featured</span></h3>
+  <section aria-label="Featured posts" class="featured">
+    {% if collections.featuredPosts %}
+      {% set x = 0 %}
+      {%- for post in collections.featuredPosts | reverse -%}
+        {% set x = x + 1 %}
+        {% if x < 4 %}
+        <a href="{{ post.url }}" class="rounded">
+          <img
+            src="{% if post.data.image %}{{ post.data.image }}{% else %}https://fakeimg.pl/600x400/333333/666666?text=-+No+Image+-&font=default{% endif %}"
+            alt="{% if post.data.imageAlt %}{{ post.data.imageAlt }}{% else %}Image not added to post{% endif %}"
+            width="100%"
+            class="rounded"
+          />
+          <div class="featured_content">
+            <p class="post_date"><small class="post_data__span"><time>{{ post.data.date | postDate }}</time><span class="tag">{{ post.data.tags[0] }}</span></small></p>
+            <p class="post_title">{{ post.data.title | truncate(60) }}</p>
+            <small class="post_description">{{ post.data.description | safe | truncate(160) }}</small>
+          </div>
+        </a>
+        {% endif %}
+      {%- endfor -%}
+    {% endif %}
+  </section>
+  <h3 class="seeall"><a href="/blog/featured" class="spl_link rounded">more featured posts &rarr;</a></h3>
+</div>
