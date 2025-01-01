@@ -1,0 +1,6 @@
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: clamp(0.6em, 5vw, 1.2em);
+}

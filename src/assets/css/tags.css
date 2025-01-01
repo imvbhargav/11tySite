@@ -1,0 +1,39 @@
+.tags_tag {
+  display: inline-block;
+  font-family: var(--outfit);
+  background-color: #333;
+  padding: 0.5rem 1.5rem;
+  margin: 0 auto;
+  position: relative;
+  font-weight: 900;
+  border-radius: 2rem;
+  font-size: 2rem;
+}
+
+.tags_tag:before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  filter: blur(2px);
+  left: 0;
+  opacity: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 2rem;
+  background: linear-gradient(to right,  blueviolet, #ec4899, #3b82f6);
+  z-index: -1;
+  transition: all 150ms ease-in-out;
+}
+
+.tags_tag:hover:before {
+  width: 100%;
+  opacity: 1;
+}
+
+.tags_list {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  gap: 1rem;
+  flex-wrap: wrap;
+}

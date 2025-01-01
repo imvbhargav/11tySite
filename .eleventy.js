@@ -2,8 +2,8 @@ import { DateTime } from 'luxon';
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 
 export default function(eleventyConfig) {
-  eleventyConfig.addPassthroughCopy({ 'src/assets': '/' });
-  eleventyConfig.addPassthroughCopy({ "src/blog/sitemap.xml.njk": "/blog/sitemap.xml" });
+  eleventyConfig.addPassthroughCopy('src/assets');
+  eleventyConfig.addPassthroughCopy({ "/src/blog/sitemap.xml.njk": "/blog/sitemap.xml" });
 
   eleventyConfig.addPlugin(feedPlugin, {
 		type: "rss",

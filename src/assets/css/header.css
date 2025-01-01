@@ -1,0 +1,40 @@
+.header_nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.focustext {
+  font-family: var(--parkinsans);
+  color: blueviolet;
+  text-decoration: none;
+}
+
+.header_nav__ul {
+  display: flex;
+  gap: 1em
+}
+
+.navlist_item {
+  list-style: none;
+}
+
+.header_nav__h2 {
+  font-size: clamp(1.2em, 5vw, 2em);
+}
+
+.navlist_item > h3 {
+  font-size: clamp(0.8em, 5vw, 1.6em);
+}
+
+.active {
+  pointer-events: none;
+  text-decoration: none;
+  color: #ccc;
+}
+
+@media only screen and (max-width: 300px) {
+  .navlist_item > h3 {
+    display: none;
+  }
+}

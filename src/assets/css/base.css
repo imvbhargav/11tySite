@@ -1,0 +1,98 @@
+@import url('/assets/css/header.css');
+@import url('/assets/css/footer.css');
+@import url('/assets/css/index.css');
+
+:root {
+  /* Available imported fonts as variables: */
+  --outfit: 'Outfit';
+  --parkinsans: 'Parkinsans';
+  --jmono: 'JetBrains Mono';
+  --atkinson: 'Atkinson Hyperlegible';
+  --garamond: 'Cormorant Garamond';
+}
+
+html, body {
+  height: 100%;
+  overflow: auto;
+  position: relative;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  filter: url(#grain);
+  color: #ccc;
+  background-repeat: no-repeat;
+  background-color: #111;
+  font-family: var(--atkinson);
+  font-size: 1.6em;
+  margin: 0;
+  padding: 0;
+}
+
+::selection {
+  background-color: blueviolet;
+  color: #ccc;
+}
+
+.wrapper {
+  max-width: 900px;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.spl_link:not(.active) {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.spl_link:not(.active):hover {
+  color: #ec4899;
+}
+
+a, a:hover {
+  transition: 150ms linear all;
+}
+
+.pagination_nav {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination_links {
+  display: flex;
+  gap: 0.5rem;
+  list-style: none;
+  border-radius: 2rem;
+  padding: 1rem 0;
+  background-color: #333;
+  overflow: hidden;
+  border: 1px solid #444;
+}
+
+.pagination_links > li > a {
+  background-color: #222;
+  font-weight: 900;
+  font-family: var(--jmono);
+  padding: 1rem 2rem;
+  text-decoration: none;
+}
+
+.pagination_links > li > a:hover {
+  background-color: #333;
+}
+
+.pagination_links > li > a[aria-current="page"] {
+  color: #ccc;
+  pointer-events: none;
+  background-color: #333;
+}
