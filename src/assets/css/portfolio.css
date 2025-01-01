@@ -15,7 +15,7 @@ html {
 }
 
 body {
-  filter: url(#grain);
+  backdrop-filter: url(#grain);
   color: #ccc;
   background-repeat: no-repeat;
   background-color: #111;
