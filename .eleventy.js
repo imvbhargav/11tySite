@@ -3,8 +3,8 @@ import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 
 export default function(eleventyConfig) {
 
-  eleventyConfig.addPassthroughCopy('./src/styles.css');
-  eleventyConfig.addPassthroughCopy('./src/assets');
+  eleventyConfig.addPassthroughCopy('src/assets/css');
+  eleventyConfig.addPassthroughCopy('src/assets/images');
   eleventyConfig.addPassthroughCopy({ "/src/blog/sitemap.xml.njk": "/blog/sitemap.xml" });
 
   eleventyConfig.addPlugin(feedPlugin, {
