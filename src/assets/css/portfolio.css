@@ -10,7 +10,8 @@
 }
 
 html, body {
-  overflow: hidden auto;
+  height: 100%;
+  overflow: auto;
   position: relative;
 }
 
@@ -20,6 +21,7 @@ html {
 }
 
 body {
+  box-sizing: border-box;
   filter: url(#grain);
   color: #ccc;
   background-repeat: no-repeat;
