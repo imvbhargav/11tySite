@@ -9,13 +9,18 @@
   --pink: #ec4899;
 }
 
+html, body {
+  overflow: hidden auto;
+  position: relative;
+}
+
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;
 }
 
 body {
-  backdrop-filter: url(#grain);
+  filter: url(#grain);
   color: #ccc;
   background-repeat: no-repeat;
   background-color: #111;
