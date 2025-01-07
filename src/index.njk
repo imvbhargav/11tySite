@@ -301,11 +301,15 @@
       return formattedDate;
     }
 
-    const timeContainer = document.getElementById("time");
-    setInterval(() => {
+    function updateTime() {
+      const timeContainer = document.getElementById("time");
       const currentDateTime = new Date();
       timeContainer.innerText = formatDate(currentDateTime);
-    }, 1000);
+    }
+
+    updateTime();
+
+    setInterval(updateTime, 1000);
   </script>
 </body>
 </html>
