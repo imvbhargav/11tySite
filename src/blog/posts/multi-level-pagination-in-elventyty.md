@@ -5,7 +5,7 @@ tags:
       - Eleventy
 featured: true
 description: This post intoduces to the Netflix's distributed counter abstraction system. This system is designed to store and query large volumes of temporal event data low millisecond latencies.
-image: https://images.unsplash.com/photo-1725452119307-14e2642a78a6?q=80&w=1771&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
+image: https://res.cloudinary.com/dqm4sy7zi/image/upload/v1739200416/Pagination.png
 ---
 #### Introduction
 Eleventy, often referred to as 11ty, is a modern static site generator praised for its simplicity, flexibility, and speed. With multiple template language support and minimal dependencies, it provides developers fine-grained control over their websites.
