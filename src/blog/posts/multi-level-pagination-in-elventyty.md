@@ -15,9 +15,11 @@ Eleventy, often referred to as 11ty, is a modern static site generator praised f
 Even this site uses 11ty, which makes the creation and generation of site very simple and dynamic.
 
 #### Creating a blog in 11ty
-This blog created using 11ty has a feature that took some time for me to figure out. What is that you ask? Pagination. 
+This blog created using 11ty has a feature that took some time for me to figure out. What is that you ask?
 
-Pagination is very simple in 11ty. In my case, I have file that create the page to show my blog posts resides in `src/blog/all` folder. This folder has a `index.js` file that handles the structure. To do the pagination all I had to do is add
+Pagination. 
+
+Pagination is very simple in 11ty. In my case, I have file that creates the page to show my blog posts, which resides in `src/blog/all` folder. This folder has a `index.js` file that handles the structure. To implement pagination all I had to do is add
 
 ```yaml
 pagination:
@@ -29,11 +31,11 @@ pagination:
 So what does it do? From the collections posts, it gets 10 posts and create a page. Likewise if you have 100 posts it creates 10 pages, each having 10 posts. Which in public folder looks like this
 
 ```
-public
-  - blog
-  -  - all
-  -  -  - 1
-  -  -  - 2
+public/  
+├── blog/  
+│   ├── all/  
+│   │   ├── 1/  
+│   │   ├── 2/  
 ```
 
 so on. and the reverse it to arrange the posts such a way that latest posts comes first.

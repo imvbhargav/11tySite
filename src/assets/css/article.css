@@ -102,6 +102,11 @@ code[class*=language-], pre[class*=language-] {
   color: #ccc !important;
 }
 
+.token.tag {
+  font-family: var(--jmono) !important;
+  font-weight: normal;
+}
+
 .language-css .token.string, .style .token.string, .token.entity, .token.operator, .token.url {
   background: transparent !important;
 }
