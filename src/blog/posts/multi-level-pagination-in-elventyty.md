@@ -154,15 +154,16 @@ pagination:
 
 and done. Now customize the `tag.njk` file to display the posts in the page.
 
-```html
-\---
+```
 layout: base.njk
 pagination:
   data: collections.tagPages
   size: 1
   alias: tagpage
 permalink: "{% if tagpage.id == 0 %}{{ '/blog/tags/' + tagpage.tag | slugify + '/index.html' }}{% else %}{{ '/blog/tags/' + tagpage.tag | slugify + '/' + tagpage.id + '/index.html' }}{% endif %}"
-\---
+```
+
+```html
 <div class="posts_wrapper rounded">
   <h3 class="heading"><span class="rounded">Posts tagged {{ tagpage.tag }}</span></h3>
   <h3 class="seeall rounded"><a class="spl_link rounded" href="/blog/all">see all posts &rarr;</a></h3>
