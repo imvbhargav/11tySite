@@ -19,7 +19,7 @@ This blog created using 11ty has a feature that took some time for me to figure 
 
 Pagination is very simple in 11ty. In my case, I have file that create the page to show my blog posts resides in `src/blog/all` folder. This folder has a `index.js` file that handles the structure. To do the pagination all I had to do is add
 
-```md
+```yaml
 pagination:
   data: collections.posts
   size: 10
@@ -90,7 +90,7 @@ eleventyConfig.addCollection("postTags", function (collectionApi) {
 
 This loops through the posts and create a collection of all the tags with name `postTags`, with this now if we use pagination, 
 
-```
+```yaml
 pagination:
   data: collections.postTags
   size: 1
@@ -154,7 +154,8 @@ pagination:
 
 and done. Now customize the `tag.njk` file to display the posts in the page.
 
-```
+{% raw %}
+```yaml
 layout: base.njk
 pagination:
   data: collections.tagPages
@@ -162,6 +163,7 @@ pagination:
   alias: tagpage
 permalink: "{% if tagpage.id == 0 %}{{ '/blog/tags/' + tagpage.tag | slugify + '/index.html' }}{% else %}{{ '/blog/tags/' + tagpage.tag | slugify + '/' + tagpage.id + '/index.html' }}{% endif %}"
 ```
+
 
 ```html
 <div class="posts_wrapper rounded">
@@ -217,3 +219,4 @@ permalink: "{% if tagpage.id == 0 %}{{ '/blog/tags/' + tagpage.tag | slugify + '
   </ul>
 </nav>
 ```
+{% endraw %}
