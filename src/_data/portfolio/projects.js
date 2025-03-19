@@ -3,7 +3,7 @@ export default {
     {
       name: "CoolerThings",
       image: "/assets/images/ecom.png",
-      title: "Modern E-commerce store created using NextJS 15",
+      title: "Modern E-commerce store",
       links: {
         live: "https://cooler-things.vercel.app/",
         github: "https://github.com/imvbhargav/cool-things",
@@ -14,7 +14,7 @@ export default {
     {
       name: "SnipLnk",
       image: "/assets/images/sniplnk.png",
-      title: "URL Shortener Created using NextJS 15",
+      title: "URL Shortener",
       links: {
         live: "https://sniplnk.vercel.app/",
         github: "https://github.com/imvbhargav/url-shortener"
