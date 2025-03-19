@@ -1,6 +1,28 @@
 export default {
   mainProjects: [
     {
+      name: "CoolerThings",
+      image: "/assets/images/ecom.png",
+      title: "Modern E-commerce store created using NextJS 15",
+      links: {
+        live: "https://cooler-things.vercel.app/",
+        github: "https://github.com/imvbhargav/cool-things",
+      },
+      stack: ["NextJS", "React", "Zustand", "Prisma", "PostgreSQL", "Cloudinary"],
+      content: "Features: Authentication System with role based access to USER and SELLER, Cart System, Order tracking, Modals, Server side rendering, Seller dashboard for adding products, Product images uploading to cloudinary dynamically, Product review and rating system, Optimistic API Calls, Infinite Loading, Filtering by category, Sorting by price."
+    },
+    {
+      name: "SnipLnk",
+      image: "/assets/images/sniplnk.png",
+      title: "URL Shortener Created using NextJS 15",
+      links: {
+        live: "https://sniplnk.vercel.app/",
+        github: "https://github.com/imvbhargav/url-shortener"
+      },
+      stack: ["NextJS", "React", "Prisma", "PostgreSQL"],
+      content: "This is a simple URL Shortener created using NextJS. The highlight of this site is the design and animation. Animation of box highlighting with trials fading is affect created using React/JS. On the input of a long URL, the site shortens the links to this website domain with 6 radom letter string. Upon vising this link, user will be redirected to main long link. The number of times this short link is clicked is stored."
+    },
+    {
       name: "YooTwo",
       image: "/assets/images/img2.png",
       title: "Peer-2-Peer WebRTC video call and watch party site",
