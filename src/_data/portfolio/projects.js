@@ -9,7 +9,7 @@ export default {
         github: "https://github.com/imvbhargav/cool-things",
       },
       stack: ["NextJS", "React", "Zustand", "Prisma", "PostgreSQL", "Cloudinary"],
-      content: "Features: Authentication System with role based access to USER and SELLER, Cart System, Order tracking, Modals, Server side rendering, Seller dashboard for adding products, Product images uploading to cloudinary dynamically, Product review and rating system, Optimistic API Calls, Infinite Loading, Filtering by category, Sorting by price."
+      content: "This project is a modern e-commerce project, this includes an authentication system with role-based access for users and sellers. It features a cart system, order tracking, and interactive modals. Server-side rendering ensures fast load times and SEO benefits. Sellers have a dedicated dashboard to manage products, with dynamic image uploads to Cloudinary. Users can leave reviews and ratings on products. Optimistic API calls provide instant UI updates, while infinite loading enhances browsing. Filtering by category and sorting by price make product discovery easier."
     },
     {
       name: "SnipLnk",
@@ -20,7 +20,7 @@ export default {
         github: "https://github.com/imvbhargav/url-shortener"
       },
       stack: ["NextJS", "React", "Prisma", "PostgreSQL"],
-      content: "This is a simple URL Shortener created using NextJS. The highlight of this site is the design and animation. Animation of box highlighting with trials fading is affect created using React/JS. On the input of a long URL, the site shortens the links to this website domain with 6 radom letter string. Upon vising this link, user will be redirected to main long link. The number of times this short link is clicked is stored."
+      content: "This is a simple URL shortener built with Next.js, emphasizing design and animation. A key feature is the hover-triggered box-highlighting effect with fading trails, created using React and JavaScript. When a user enters a long URL, the site generates a shortened link with a six-letter random string under its domain. Clicking the short link redirects to the original URL, and each visit is tracked."
     },
     {
       name: "YooTwo",
